@@ -1,32 +1,33 @@
 {
-  "name": "uniquely",
-  "version": "0.0.3",
+  "dependencies": {
+    "es6-util": "0.0.1",
+    "microseconds": "0.1.0"
+  },
   "description": "create unique identifiers",
-  "main": "lib/index.js",
-  "scripts": {
-    "postinstall": "babel src -d lib"
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-preset-es2015": "^6.6.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kamicane/uniquely.git"
-  },
+  "gitHead": "3a16175761176e51fba8c597812260ba2bdd2a1b",
+  "homepage": "https://github.com/kamicane/uniquely",
   "keywords": [
     "uid",
     "uuid",
     "unique"
   ],
-  "author": "Valerio Proietti <kamicane@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kamicane/uniquely/issues"
+  "main": "lib/index.js",
+  "name": "uniquely",
+  "optionalDependencies": {},
+  "readme": "# Uniquely\n\nCreate unique identifiers.\n\n## API\n\nDefault characters : `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`\n\n### id\n\nAn id based on a number.\n\n```js\nvar unique = require('uniquely');\nunique.id(87654); // 'Lmm'\n```\n\n### time\n\nAn unique id, from your characters, based on microtime\n\n```js\nunique.time(); // '5Pp68s5wk'\n```\n\n### random\n\nA random id, from your characters, specified number of characters\n\n```js\nunique.random(10); // 'e90WFdthcl'\nunique.random(10); // 'XnP2uvVw7r'\n```\n\n### iterator\n\nA way to create sequential ids, using es6 iterators\n\n```js\nvar it = unique.iterator();\nit.next().value; // '0'\n// some tens of thousands iterations later...\nit.next().value; // 'aRG'\n```\n\n### create\n\nThe above functions, with your own set of characters\n\n```js\nvar create = unique.create;\nvar abc = create('abc');\n\nabc.id(87654); // 'cccbcacaaa'\nabc.random(10); // 'acbccbcaba'\nabc.time(); // 'acacccaabccbacaabaccacbacbbcbbbb'\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamicane/uniquely.git"
   },
-  "homepage": "https://github.com/kamicane/uniquely",
-  "dependencies": {
-    "es6-util": "0.0.1",
-    "microseconds": "0.1.0"
+  "scripts": {
+    "build": "babel src -d lib",
+    "prepublish": "npm run build"
   },
-  "devDependencies": {
-    "babel-cli": "^6.6.5",
-    "babel-preset-es2015": "^6.6.0"
-  }
+  "version": "0.0.3"
 }
